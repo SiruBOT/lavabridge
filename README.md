@@ -25,14 +25,14 @@ LavaBridge acts as a translation proxy between Lavalink v3 clients and v4 server
 │     Client      │                    │       Proxy        │                    │     Server      │
 │                 │                    │                    │                    │                 │
 │  ┌───────────┐  │  REST API (v3)     │  ┌──────────────┐  │  REST API (v4)     │  ┌───────────┐  │
-│  │    HTTP   │  │ ──GET /loadtracks─▶│  │   REST       │  │ ──GET /v4/...────▶│  │    HTTP   │  │
-│  │   Client  │  │ ◀──────JSON─────── │  │ Translator   │  │ ◀──────JSON────── │  │   Server  │  │
+│  │    HTTP   │  │ ─GET /loadtracks─▶│  │    REST      │  │ ──GET /v4/...───▶ │  │    HTTP   │  │
+│  │   Client  │  │ ◀─────JSON─────── │  │  Translator  │  │ ◀──────JSON────── │  │   Server  │  │
 │  └───────────┘  │                    │  └──────────────┘  │                    │  └───────────┘  │
 │                 │                    │                    │                    │                 │
-│  ┌───────────┐  │  WebSocket (v3)    │  ┌──────────────┐  │  REST (PATCH/...) │  ┌───────────┐  │
-│  │ WebSocket │  │ ──op:play─────────▶│  │   WS         │  │ ──PATCH /v4/...─▶ │  │ WebSocket │  │
-│  │   Client  │  │ ──op:filters──────▶│  │ Translator   │  │ ──PATCH /v4/...─▶ │  │   Server  │  │
-│  │           │  │ ◀──event────────── │  │ (WS→REST)    │  │ ◀──event──────── │  │           │  │
+│  ┌───────────┐  │  WebSocket (v3)    │  ┌──────────────┐  │  REST (PATCH/...)  │  ┌───────────┐  │
+│  │ WebSocket │  │ ──op:play────────▶│  │      WS      │  │ ──PATCH /v4/...─▶ │  │ WebSocket │  │
+│  │   Client  │  │ ──op:filters─────▶│  │  Translator  │  │ ──PATCH /v4/...─▶ │  │   Server  │  │
+│  │           │  │ ◀──event───────── │  │  (WS→REST)   │  │ ◀──event────────  │  │           │  │
 │  └───────────┘  │                    │  └──────────────┘  │                    │  └───────────┘  │
 │                 │                    │                    │                    │                 │
 └─────────────────┘                    └────────────────────┘                    └─────────────────┘
