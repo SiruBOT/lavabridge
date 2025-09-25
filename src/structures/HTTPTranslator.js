@@ -37,6 +37,10 @@ export class HTTPTranslator {
 					name: json.data.info.name,
 					selectedTrack: json.data.info.selectedTrack,
 				};
+				translated.tracks = json.data.tracks.map((t) => ({
+					track: t.encoded,
+					info: t.info,
+				}));
 				break;
 			}
 			case "search": {
